@@ -28,6 +28,14 @@ sdio_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_sd.h
 sdio_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_sdmmc.h
 sdio_test\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 sdio_test\main.o: ../Inc/dma.h
+sdio_test\main.o: ../Inc/fatfs.h
+sdio_test\main.o: ../Middlewares/Third_Party/FatFs/src/ff.h
+sdio_test\main.o: ../Middlewares/Third_Party/FatFs/src/integer.h
+sdio_test\main.o: ../Inc/ffconf.h
+sdio_test\main.o: ../Inc/bsp_driver_sd.h
+sdio_test\main.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
+sdio_test\main.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
+sdio_test\main.o: ../Middlewares/Third_Party/FatFs/src/drivers/sd_diskio.h
 sdio_test\main.o: ../Inc/sdio.h
 sdio_test\main.o: ../Inc/usart.h
 sdio_test\main.o: ../Inc/gpio.h

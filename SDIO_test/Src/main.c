@@ -3,35 +3,45 @@
   * File Name          : main.c
   * Description        : Main program body
   ******************************************************************************
-  ** This notice applies to any and all portions of this file
+  * This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
   * USER CODE END. Other portions of this file, whether 
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * Copyright (c) 2017 STMicroelectronics International N.V. 
+  * All rights reserved.
   *
-  * Redistribution and use in source and binary forms, with or without modification,
-  * are permitted provided that the following conditions are met:
-  *   1. Redistributions of source code must retain the above copyright notice,
-  *      this list of conditions and the following disclaimer.
-  *   2. Redistributions in binary form must reproduce the above copyright notice,
-  *      this list of conditions and the following disclaimer in the documentation
-  *      and/or other materials provided with the distribution.
-  *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote products derived from this software
-  *      without specific prior written permission.
+  * Redistribution and use in source and binary forms, with or without 
+  * modification, are permitted, provided that the following conditions are met:
   *
-  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * 1. Redistribution of source code must retain the above copyright notice, 
+  *    this list of conditions and the following disclaimer.
+  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  *    this list of conditions and the following disclaimer in the documentation
+  *    and/or other materials provided with the distribution.
+  * 3. Neither the name of STMicroelectronics nor the names of other 
+  *    contributors to this software may be used to endorse or promote products 
+  *    derived from this software without specific written permission.
+  * 4. This software, including modifications and/or derivative works of this 
+  *    software, must execute solely and exclusively on microcontroller or
+  *    microprocessor devices manufactured by or for STMicroelectronics.
+  * 5. Redistribution and use of this software other than as permitted under 
+  *    this license is void and will automatically terminate your rights under 
+  *    this license. 
+  *
+  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
+  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
+  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
   ******************************************************************************
   */
@@ -39,6 +49,7 @@
 #include "main.h"
 #include "stm32f1xx_hal.h"
 #include "dma.h"
+#include "fatfs.h"
 #include "sdio.h"
 #include "usart.h"
 #include "gpio.h"
@@ -54,11 +65,15 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
-HAL_SD_ErrorTypedef Status;
-uint32_t Buffer_Tx[512/4];
-uint32_t Buffer_Rx[512/4];
-uint32_t i;
+FATFS fs;
+FIL fil;
 
+uint32_t byteswritten;
+uint32_t bytesread;
+uint8_t wtext[]="This is STM32 working with FatFs";
+uint8_t rtext[100];
+char filename[]="STM32Test";
+uint8_t *test = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -70,7 +85,7 @@ void SystemClock_Config(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+//static void Error_Handle(void);
 /* USER CODE END 0 */
 
 int main(void)
@@ -101,10 +116,11 @@ int main(void)
   MX_DMA_Init();
   MX_SDIO_SD_Init();
   MX_USART2_UART_Init();
+  MX_FATFS_Init();
 
   /* USER CODE BEGIN 2 */
-	
-	
+
+		
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,84 +130,98 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-	
-		printf("Warring this program may erase all the TF card data. \r\n");
+			printf("\r\n ******FatFs Example******\r\n\r\n");
 		
-		printf(" \r\n Initialize SD card successfuliy! \r\n\r\n ");
-		printf("SD card information! \r\n");
-		printf("CardCapacity:%llu \r\n",SDCardInfo.CardCapacity);
-		printf("CardBlockSize:%d \r\n",SDCardInfo.CardBlockSize);
-		printf("RCA:%d \r\n",SDCardInfo.RCA);
-		printf("CardType:%d \r\n",SDCardInfo.CardType);
-		
-		///*-------------------Block Write---------------------------*/
-		memset(Buffer_Tx,0x15,sizeof(Buffer_Tx));
-		if( HAL_SD_WriteBlocks(&hsd,Buffer_Tx,0,512,1) == SD_OK )
+		///* Register the file system object to the FatFs module */
+		retSD = f_mount(&fs,"",0);
+		if( retSD )
 		{
-			Status = HAL_SD_CheckWriteOperation( &hsd,(uint32_t)100000000 );
-			if( Status == SD_OK )
-			{
-				printf("\r\n Write block successfully! \r\n");
-				for(i=0;i<sizeof(Buffer_Tx)>>2;i++ )
-				{
-					printf("%02x:0x%08X",i,Buffer_Tx[i]);
-				}
-				printf("\r\n");
-			}
-			else
-			{
-				printf("\r\n Write block fail! \n\r");
-			}
-		}
-		///*--------------Block Read----------------------*/
-		if( HAL_SD_ReadBlocks(&hsd,Buffer_Rx,0,512,1) == SD_OK )
-		{
-			Status = HAL_SD_CheckReadOperation(&hsd,0xFFFF);
-			if( Status == SD_OK )
-			{
-				printf("\r\n Read block successful");
-				for(i=0;i<sizeof(Buffer_Rx)>>2;i++)
-				{
-					printf("%02x:0x%08x",i,Buffer_Rx[i]);
-				}
-				printf("\r\n");
-			}
-			else
-			{
-				printf("\r\n Read block fail! \r\n");
-			}
-		}
-		
-		///*------------------Block Erase----------------------*/
-		Status = HAL_SD_Erase(&hsd,0,512);
-		if( Status == SD_OK )
-		{
-			printf("\r\n Erase block successfully! \r\n");
+			printf(" mount error:%d \r\n ",retSD);
+//			Error_Handler();
 		}
 		else
 		{
-			printf("\r\n Erase block fail! \r\n");
+			printf("mount succeed!!! \r\n");
 		}
 		
-		///*-----------------Block Read-----------------------*/
-		if( HAL_SD_ReadBlocks(&hsd,Buffer_Rx,0,512,1) == SD_OK )
+		///* Creat file name */
+		retSD = f_mkdir( (const TCHAR*)test );
+		printf("nkdir file is %d \n\r",retSD);
+		
+		///* Create and open new text file object with write access */
+		retSD = f_open( &fil,(const TCHAR*)test,FA_CREATE_ALWAYS|FA_WRITE );
+		if(retSD)
 		{
-			Status = HAL_SD_CheckReadOperation(&hsd,0XFFFF);
-			if( Status == SD_OK )
-			{
-				printf("\r\n Read block successfully! \r\n");
-				for(i=0;i<sizeof(Buffer_Rx)>>2;i++)
-				{
-					printf("%02x:0x%08x",i,Buffer_Rx[i]);
-				}
-				printf("\r\n");
-			}
-			else
-			{
-				printf("\r\n Read block fail! \r\n");
-			}
+			printf("open file error:%d \r\n",retSD);
+		}
+		else
+		{
+			printf("open file succeed!!! \r\n");
 		}
 		
+		///* Write data to the text file */
+		retSD = f_write( &fil,wtext,sizeof(wtext),(void *)byteswritten );
+		if(retSD)
+		{
+			printf("write file error:%d \r\n");
+		}
+		else
+		{
+			printf("write file succeed!!! \r\n");
+			printf("write Data:%s \r\n");
+		}
+		
+		///* Close the open text file */
+		retSD = f_close(&fil);
+		if(retSD)
+		{
+			printf("close error! \r\n");
+		}
+		else
+		{
+			printf("close succeed!!! \r\n");
+		}
+		
+		///* Open the text files object with read access */
+		retSD = f_open(&fil,(const TCHAR*)filename,FA_READ);
+		if(retSD)
+		{
+			printf("open file error:%d \r\n",retSD);
+		}
+		else
+		{
+			printf("open file succeed! \r\n");
+		}
+		
+		///* read data from the text files */
+		retSD = f_read(&fil,rtext,sizeof(rtext),(UINT *)&bytesread);
+		if(retSD)
+		{
+			printf("read error:%d \r\n",retSD);
+		}
+		else
+		{
+			printf("read succeed!! \r\n");
+			printf("read Data : %s \r\n",rtext);
+		}
+		
+		///* close the open text file */
+		retSD = f_close(&fil);
+		if(retSD)
+		{
+			printf("close error:%d \r\n",retSD);
+		}
+		else
+		{
+			printf("close secceed!! \r\n");
+		}
+		
+		///* compare read data with the expected data */
+		if( bytesread == byteswritten )
+		{
+			printf("FatFs is working well!!! \r\n");
+		}
+	
   }
   /* USER CODE END 3 */
 
@@ -257,6 +287,7 @@ void SystemClock_Config(void)
 void _Error_Handler(char * file, int line)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
+	printf("someing wrong... \r\n");
   /* User can add his own implementation to report the HAL error return state */
   while(1) 
   {
