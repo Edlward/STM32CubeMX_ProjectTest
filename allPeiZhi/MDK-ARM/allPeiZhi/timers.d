@@ -1,0 +1,16 @@
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/timers.c
+allpeizhi\timers.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+allpeizhi\timers.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+allpeizhi\timers.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+allpeizhi\timers.o: ../Inc/FreeRTOSConfig.h
+allpeizhi\timers.o: ../Inc/main.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+allpeizhi\timers.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h

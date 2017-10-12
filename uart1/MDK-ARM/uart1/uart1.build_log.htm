@@ -1,0 +1,140 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.20.0.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: li chengxiang, Microsoft, LIC=GE745-GJKAC-FZTWU-S2X8U-SB4KS-WMEYC
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.20
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 2 (build 183)
+Assembler:       Armasm.exe V5.06 update 2 (build 183)
+Linker/Locator:  ArmLink.exe V5.06 update 2 (build 183)
+Library Manager: ArmAr.exe V5.06 update 2 (build 183)
+Hex Converter:   FromElf.exe V5.06 update 2 (build 183)
+CPU DLL:         SARMCM3.DLL V5.20
+Dialog DLL:      DCM.DLL V1.13.7.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.9.0
+ 
+<h2>Project:</h2>
+E:\STM32ClubMX\New-Project\uart1\MDK-ARM\uart1.uvprojx
+Project File Date:  08/10/2017
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 2 (build 183)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'uart1'
+compiling stm32f1xx_it.c...
+compiling main.c...
+compiling usart.c...
+compiling gpio.c...
+compiling stm32f1xx_hal_msp.c...
+assembling startup_stm32f103xe.s...
+compiling stm32f1xx_hal_tim_ex.c...
+compiling system_stm32f1xx.c...
+compiling stm32f1xx_hal_gpio.c...
+compiling stm32f1xx_hal_rcc_ex.c...
+compiling stm32f1xx_hal_rcc.c...
+compiling stm32f1xx_hal_uart.c...
+compiling stm32f1xx_hal.c...
+compiling stm32f1xx_hal_pwr.c...
+compiling stm32f1xx_hal_gpio_ex.c...
+compiling stm32f1xx_hal_tim.c...
+compiling stm32f1xx_hal_flash_ex.c...
+compiling stm32f1xx_hal_flash.c...
+compiling stm32f1xx_hal_cortex.c...
+compiling stm32_bsp_uart.c...
+USER\stm32_bsp_uart.h(34): error:  #20: identifier "User_Timer_Typedef" is undefined
+  		User_Timer_Typedef *st_timer;
+USER\stm32_bsp_uart.c(35): error:  #20: identifier "User_Timer_Typedef" is undefined
+  	User_Timer_Typedef    st_usart2_rx_com_timer = USER_TIMER_INIT_VALUE;    //³¬Ê±???ý½á¹???
+USER\stm32_bsp_uart.c(35): error:  #20: identifier "USER_TIMER_INIT_VALUE" is undefined
+  	User_Timer_Typedef    st_usart2_rx_com_timer = USER_TIMER_INIT_VALUE;    //³¬Ê±???ý½á¹???
+USER\stm32_bsp_uart.c(41): error:  #20: identifier "User_Timer_Typedef" is undefined
+  	User_Timer_Typedef    st_usart2_tx_com_timer = USER_TIMER_INIT_VALUE;    //³¬Ê±???ý½á¹???
+USER\stm32_bsp_uart.c: 0 warnings, 4 errors
+compiling stm32f1xx_hal_dma.c...
+compiling stm32_bsp_timer.c...
+USER\stm32_bsp_timer.c(37): warning:  #223-D: function "HAL_TIM_Base_Start" declared implicitly
+  	HAL_TIM_Base_Start(&MICROSECOND_TIMER);
+USER\stm32_bsp_timer.c(48): warning:  #223-D: function "HAL_TIM_Base_Start" declared implicitly
+  	HAL_TIM_Base_Start(&PWM_TIMER);								//Ê¹??PWMtimer??updata?Ð¶?
+USER\stm32_bsp_timer.c(48): error:  #20: identifier "htim1" is undefined
+  	HAL_TIM_Base_Start(&
+WM_TIMER);								//Ê¹??PWMtimer??updata?Ð¶?
+USER\stm32_bsp_timer.c(50): error:  #20: identifier "htim3" is undefined
+  	HAL_TIM_Base_Start(&
+DC_TRIG_TIMER);					//?ô¶?AD¶¨Ê±?÷´¥·¢²É¼?
+USER\stm32_bsp_timer.c(52): warning:  #223-D: function "HAL_TIM_PWM_Start" declared implicitly
+  	HAL_TIM_PWM_Start(&PWM_TIMER,TIM_CHANNEL_4);  //Ê¹??PWM4?Ä±È½Ï²¶»??Ð¶?
+USER\stm32_bsp_timer.c(52): error:  #20: identifier "TIM_CHANNEL_4" is undefined
+  	HAL_TIM_PWM_Start(&
+WM_TIMER,TIM_CHANNEL_4);  //Ê¹??PWM4?Ä±È½Ï²¶»??Ð¶?
+USER\stm32_bsp_timer.c(62): warning:  #223-D: function "HAL_TIM_PWM_Start" declared implicitly
+  	HAL_TIM_PWM_Start(&PWM_TIMER,TIM_CHANNEL_1);
+USER\stm32_bsp_timer.c(62): error:  #20: identifier "htim1" is undefined
+  	HAL_TIM_PWM_Start(&
+WM_TIMER,TIM_CHANNEL_1);
+USER\stm32_bsp_timer.c(62): error:  #20: identifier "TIM_CHANNEL_1" is undefined
+  	HAL_TIM_PWM_Start(&
+WM_TIMER,TIM_CHANNEL_1);
+USER\stm32_bsp_timer.c(63): error:  #20: identifier "TIM_CHANNEL_2" is undefined
+  	HAL_TIM_PWM_Start(&
+WM_TIMER,TIM_CHANNEL_2);
+USER\stm32_bsp_timer.c(64): error:  #20: identifier "TIM_CHANNEL_3" is undefined
+  	HAL_TIM_PWM_Start(&
+WM_TIMER,TIM_CHANNEL_3);
+USER\stm32_bsp_timer.c(67): warning:  #223-D: function "HAL_TIMEx_PWMN_Start" declared implicitly
+  	HAL_TIMEx_PWMN_Start(&PWM_TIMER,TIM_CHANNEL_2);
+USER\stm32_bsp_timer.c(79): warning:  #223-D: function "HAL_TIM_PWM_Stop" declared implicitly
+  	HAL_TIM_PWM_Stop(&PWM_TIMER,TIM_CHANNEL_1);
+USER\stm32_bsp_timer.c(79): error:  #20: identifier "htim1" is undefined
+  	HAL_TIM_PWM_Stop(&
+WM_TIMER,TIM_CHANNEL_1);
+USER\stm32_bsp_timer.c(79): error:  #20: identifier "TIM_CHANNEL_1" is undefined
+  	HAL_TIM_PWM_Stop(&
+WM_TIMER,TIM_CHANNEL_1);
+USER\stm32_bsp_timer.c(80): error:  #20: identifier "TIM_CHANNEL_2" is undefined
+  	HAL_TIM_PWM_Stop(&
+WM_TIMER,TIM_CHANNEL_2);
+USER\stm32_bsp_timer.c(81): error:  #20: identifier "TIM_CHANNEL_3" is undefined
+  	HAL_TIM_PWM_Stop(&
+WM_TIMER,TIM_CHANNEL_3);
+USER\stm32_bsp_timer.c(83): warning:  #223-D: function "HAL_TIMEx_PWMN_Stop" declared implicitly
+  	HAL_TIMEx_PWMN_Stop(&PWM_TIMER,TIM_CHANNEL_2);
+USER\stm32_bsp_timer.c(100): warning:  #223-D: function "__HAL_TIM_GET_COUNTER" declared implicitly
+  	ul_now_sys_micros = __HAL_TIM_GET_COUNTER(&MICROSECOND_TIMER);
+USER\stm32_bsp_timer.c(100): error:  #20: identifier "htim2" is undefined
+  	ul_now_sys_micros = __HAL_TIM_GET_COUNTER(&
+ICROSECOND_TIMER);
+USER\stm32_bsp_timer.c: 8 warnings, 13 errors
+compiling stm32_bsp_adc.c...
+USER\stm32_bsp_adc.h(18): error:  #3: #include file "USER\stm32_bsp_adc.h" includes itself
+  #include "stm32_bsp_adc.h"
+USER\stm32_bsp_adc.c: 0 warnings, 1 error
+"uart1\uart1.axf" - 17 Error(s), 8 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM::CMSIS:CORE:4.3.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 4.3.0
+
+<h2>Collection of Component include folders:</h2>
+  E:\STM32ClubMX\New-Project\uart1\MDK-ARM\RTE
+  D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  D:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:4.3.0
+Target not created.
+Build Time Elapsed:  00:00:15
+</pre>
+</body>
+</html>

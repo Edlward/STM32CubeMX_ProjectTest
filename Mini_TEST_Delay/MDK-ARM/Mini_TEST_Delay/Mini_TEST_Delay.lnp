@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"mini_test_delay\main.o"
+"mini_test_delay\gpio.o"
+"mini_test_delay\usart.o"
+"mini_test_delay\stm32f1xx_it.o"
+"mini_test_delay\stm32f1xx_hal_msp.o"
+"mini_test_delay\system_stm32f1xx.o"
+"mini_test_delay\stm32f1xx_hal_gpio.o"
+"mini_test_delay\stm32f1xx_hal.o"
+"mini_test_delay\stm32f1xx_hal_tim.o"
+"mini_test_delay\stm32f1xx_hal_dma.o"
+"mini_test_delay\stm32f1xx_hal_rcc.o"
+"mini_test_delay\stm32f1xx_hal_flash.o"
+"mini_test_delay\stm32f1xx_hal_pwr.o"
+"mini_test_delay\stm32f1xx_hal_flash_ex.o"
+"mini_test_delay\stm32f1xx_hal_gpio_ex.o"
+"mini_test_delay\stm32f1xx_hal_uart.o"
+"mini_test_delay\stm32f1xx_hal_cortex.o"
+"mini_test_delay\stm32f1xx_hal_tim_ex.o"
+"mini_test_delay\stm32f1xx_hal_rcc_ex.o"
+"mini_test_delay\startup_stm32f103xe.o"
+"mini_test_delay\sys.o"
+"mini_test_delay\led.o"
+--library_type=microlib --strict --scatter "Mini_TEST_Delay\Mini_TEST_Delay.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Mini_TEST_Delay.map" -o Mini_TEST_Delay\Mini_TEST_Delay.axf

@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"test_72m_delay\system_stm32f1xx.o"
+"test_72m_delay\sys.o"
+"test_72m_delay\led.o"
+"test_72m_delay\main.o"
+"test_72m_delay\usart.o"
+"test_72m_delay\stm32f1xx_it.o"
+"test_72m_delay\stm32f1xx_hal_msp.o"
+"test_72m_delay\gpio.o"
+"test_72m_delay\startup_stm32f103xe.o"
+"test_72m_delay\stm32f1xx_hal_tim_ex.o"
+"test_72m_delay\stm32f1xx_hal_cortex.o"
+"test_72m_delay\stm32f1xx_hal.o"
+"test_72m_delay\stm32f1xx_hal_gpio_ex.o"
+"test_72m_delay\stm32f1xx_hal_rcc.o"
+"test_72m_delay\stm32f1xx_hal_gpio.o"
+"test_72m_delay\stm32f1xx_hal_rcc_ex.o"
+"test_72m_delay\stm32f1xx_hal_flash_ex.o"
+"test_72m_delay\stm32f1xx_hal_uart.o"
+"test_72m_delay\stm32f1xx_hal_pwr.o"
+"test_72m_delay\stm32f1xx_hal_tim.o"
+"test_72m_delay\stm32f1xx_hal_dma.o"
+"test_72m_delay\stm32f1xx_hal_flash.o"
+--library_type=microlib --strict --scatter "TEST_72M_Delay\TEST_72M_Delay.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "TEST_72M_Delay.map" -o TEST_72M_Delay\TEST_72M_Delay.axf

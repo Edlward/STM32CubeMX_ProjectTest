@@ -1,0 +1,1 @@
+test_c8t6_uart_swd\startup_stm32f103xb.o: startup_stm32f103xb.s

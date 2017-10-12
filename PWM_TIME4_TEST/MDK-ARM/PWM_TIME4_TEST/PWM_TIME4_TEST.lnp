@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"pwm_time4_test\startup_stm32f103xe.o"
+"pwm_time4_test\usart.o"
+"pwm_time4_test\gpio.o"
+"pwm_time4_test\main.o"
+"pwm_time4_test\stm32f1xx_it.o"
+"pwm_time4_test\stm32f1xx_hal_msp.o"
+"pwm_time4_test\tim.o"
+"pwm_time4_test\system_stm32f1xx.o"
+"pwm_time4_test\stm32f1xx_hal_rcc_ex.o"
+"pwm_time4_test\stm32f1xx_hal_gpio.o"
+"pwm_time4_test\stm32f1xx_hal_flash_ex.o"
+"pwm_time4_test\stm32f1xx_hal_dma.o"
+"pwm_time4_test\stm32f1xx_hal_cortex.o"
+"pwm_time4_test\stm32f1xx_hal_flash.o"
+"pwm_time4_test\stm32f1xx_hal.o"
+"pwm_time4_test\stm32f1xx_hal_tim.o"
+"pwm_time4_test\stm32f1xx_hal_rcc.o"
+"pwm_time4_test\stm32f1xx_hal_uart.o"
+"pwm_time4_test\stm32f1xx_hal_tim_ex.o"
+"pwm_time4_test\stm32f1xx_hal_gpio_ex.o"
+"pwm_time4_test\stm32f1xx_hal_pwr.o"
+--library_type=microlib --strict --scatter "PWM_TIME4_TEST\PWM_TIME4_TEST.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "PWM_TIME4_TEST.map" -o PWM_TIME4_TEST\PWM_TIME4_TEST.axf

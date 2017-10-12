@@ -1,0 +1,25 @@
+--cpu Cortex-M3
+"4g_test_uart1_1\startup_stm32f103xe.o"
+"4g_test_uart1_1\system_stm32f1xx.o"
+"4g_test_uart1_1\stm32f1xx_hal_tim.o"
+"4g_test_uart1_1\stm32f1xx_hal_cortex.o"
+"4g_test_uart1_1\stm32f1xx_hal.o"
+"4g_test_uart1_1\stm32f1xx_hal_dma.o"
+"4g_test_uart1_1\stm32f1xx_hal_uart.o"
+"4g_test_uart1_1\stm32f1xx_hal_rcc_ex.o"
+"4g_test_uart1_1\stm32f1xx_hal_tim_ex.o"
+"4g_test_uart1_1\stm32f1xx_hal_flash_ex.o"
+"4g_test_uart1_1\stm32f1xx_hal_gpio.o"
+"4g_test_uart1_1\stm32f1xx_hal_pwr.o"
+"4g_test_uart1_1\stm32f1xx_hal_flash.o"
+"4g_test_uart1_1\stm32f1xx_hal_gpio_ex.o"
+"4g_test_uart1_1\stm32f1xx_hal_rcc.o"
+"4g_test_uart1_1\main.o"
+"4g_test_uart1_1\usart.o"
+"4g_test_uart1_1\stm32f1xx_hal_msp.o"
+"4g_test_uart1_1\gpio.o"
+"4g_test_uart1_1\stm32f1xx_it.o"
+--library_type=microlib --strict --scatter "4G_TEST_UART1_1\4G_TEST_UART1_1.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "4G_TEST_UART1_1.map" -o 4G_TEST_UART1_1\4G_TEST_UART1_1.axf

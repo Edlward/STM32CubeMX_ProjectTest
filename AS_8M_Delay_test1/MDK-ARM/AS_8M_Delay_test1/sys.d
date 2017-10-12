@@ -1,0 +1,9 @@
+as_8m_delay_test1\sys.o: ..\SYSTEM\sys\sys.c
+as_8m_delay_test1\sys.o: ..\SYSTEM\sys\sys.h
+as_8m_delay_test1\sys.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
+as_8m_delay_test1\sys.o: ../Drivers/CMSIS/Include/core_cm3.h
+as_8m_delay_test1\sys.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+as_8m_delay_test1\sys.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+as_8m_delay_test1\sys.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+as_8m_delay_test1\sys.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+as_8m_delay_test1\sys.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h

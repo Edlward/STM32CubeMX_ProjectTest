@@ -1,0 +1,10 @@
+iic_test2\led.o: ..\USER\led.c
+iic_test2\led.o: ..\USER\led.h
+iic_test2\led.o: ..\SYSTEM\SYSTEM\sys\sys.h
+iic_test2\led.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
+iic_test2\led.o: ../Drivers/CMSIS/Include/core_cm3.h
+iic_test2\led.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+iic_test2\led.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+iic_test2\led.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+iic_test2\led.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+iic_test2\led.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h

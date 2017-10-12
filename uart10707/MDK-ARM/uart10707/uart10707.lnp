@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"uart10707\startup_stm32f103xe.o"
+"uart10707\stm32_bsp_timer.o"
+"uart10707\stm32_bsp_uart.o"
+"uart10707\system_stm32f1xx.o"
+"uart10707\gpio.o"
+"uart10707\main.o"
+"uart10707\usart.o"
+"uart10707\stm32f1xx_hal_msp.o"
+"uart10707\stm32f1xx_it.o"
+"uart10707\stm32f1xx_hal_flash.o"
+"uart10707\stm32f1xx_hal.o"
+"uart10707\stm32f1xx_hal_tim_ex.o"
+"uart10707\stm32f1xx_hal_uart.o"
+"uart10707\stm32f1xx_hal_gpio.o"
+"uart10707\stm32f1xx_hal_flash_ex.o"
+"uart10707\stm32f1xx_hal_rcc.o"
+"uart10707\stm32f1xx_hal_rcc_ex.o"
+"uart10707\stm32f1xx_hal_pwr.o"
+"uart10707\stm32f1xx_hal_gpio_ex.o"
+"uart10707\stm32f1xx_hal_dma.o"
+"uart10707\stm32f1xx_hal_cortex.o"
+"uart10707\stm32f1xx_hal_tim.o"
+--library_type=microlib --strict --scatter "uart10707\uart10707.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "uart10707.map" -o uart10707\uart10707.axf

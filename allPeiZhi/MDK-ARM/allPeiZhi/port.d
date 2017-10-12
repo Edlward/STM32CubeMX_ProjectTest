@@ -1,0 +1,13 @@
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/port.c
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+allpeizhi\port.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+allpeizhi\port.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+allpeizhi\port.o: ../Inc/FreeRTOSConfig.h
+allpeizhi\port.o: ../Inc/main.h
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+allpeizhi\port.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

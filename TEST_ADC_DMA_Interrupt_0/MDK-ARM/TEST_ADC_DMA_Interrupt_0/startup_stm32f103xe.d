@@ -1,0 +1,1 @@
+test_adc_dma_interrupt_0\startup_stm32f103xe.o: startup_stm32f103xe.s
